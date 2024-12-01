@@ -19,10 +19,10 @@ INSERT INTO Person (pID, pName, pGender, pNationality, pBirthdate, comID) VALUES
     (06, 'Chen Wei', 'M', 'CHN', '1980-07-30', 3); --coaches
     
 -- Insert into Athlete
-INSERT INTO Athlete (aID, aHeight, aWeight, aBMI) VALUES
-    (01, 1.85, 75.0, aBMI(aHeight, aWeight)),
-    (02, 1.70, 60.0, aBMI(aHeight, aWeight)),
-    (03, 1.68, 55.0, aBMI(aHeight, aWeight));
+INSERT INTO Athlete (aID, aHeight, aWeight) VALUES
+    (01, 1.85, 75.0),
+    (02, 1.70, 60.0),
+    (03, 1.68, 55.0);
 
 -- Insert into Coach
 INSERT INTO Coach (cID, cRole) VALUES
@@ -83,9 +83,9 @@ INSERT INTO StageAthlete (sID, aID) VALUES
 
 -- Insert into CoachAthlete
 INSERT INTO CoachAthlete (aID, cID) VALUES
-    (04, 01),
-    (05, 02),
-    (06, 03);
+    (01, 04),
+    (02, 05),
+    (03, 06);
 
 -- Insert into CoachAthleticDiscipline
 INSERT INTO CoachAthleticDiscipline (cID, adID) VALUES
