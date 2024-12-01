@@ -21,7 +21,7 @@ CREATE TABLE Person (
     pBirthdate DATE NOT NULL CHECK (pBirthdate < DATE('2024-12-01')), -- Birthdate of the person.
     pAge INTEGER GENERATED ALWAYS AS (CAST((JULIANDAY('2024-12-01') - JULIANDAY(pBirthdate)) / 365.25 AS INTEGER)), -- Age of the person.
     PRIMARY KEY (pID),
-    FOREIGN KEY (pID) REFERENCES Committee(comID) ON DELETE CASCADE ON UPDATE CASCADE
+    FOREIGN KEY (comID) REFERENCES Committee(comID) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 DROP TABLE IF EXISTS Stage;
@@ -111,6 +111,19 @@ CREATE TABLE CoachAthleticDiscipline (
     UNIQUE (cID, adID),
     PRIMARY KEY (cID, adID),
     FOREIGN KEY (cID) REFERENCES Coach(cID) ON DELETE CASCADE ON UPDATE CASCADE,
+    FOREIGN KEY (adID) REFERENCES AthleticDiscipline(adID) ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+DROP TABLE IF EXISTS AthleteAthleticDiscipline;
+
+-- Table: AthleteAthleticDiscipline
+-- Description: Represents the participation of an athlete in an athletic discipline.
+CREATE TABLE AthleteAthleticDiscipline (
+    aID INTEGER NOT NULL, -- Identifier of the athlete.
+    adID INTEGER NOT NULL, -- Identifier of the athletic discipline.
+    UNIQUE (aID, adID),
+    PRIMARY KEY (aID, adID),
+    FOREIGN KEY (aID) REFERENCES Athlete(aID) ON DELETE CASCADE ON UPDATE CASCADE,
     FOREIGN KEY (adID) REFERENCES AthleticDiscipline(adID) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
