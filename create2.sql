@@ -15,6 +15,7 @@ DROP TABLE IF EXISTS Person;
 -- Description: Represents a person that can be an athlete or a coach of a committee.
 CREATE TABLE Person (
     pID INTEGER NOT NULL UNIQUE, -- Unique identifier for the person.
+    comID INTEGER NOT NULL, -- Identifier of the committee of the person.
     pName TEXT NOT NULL, -- Name of the person.
     pGender TEXT NOT NULL CHECK (pGender IN ('M', 'F')), -- Gender of the person.
     pNationality TEXT NOT NULL, -- Nationality of the person.
