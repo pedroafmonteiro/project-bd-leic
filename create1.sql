@@ -24,12 +24,14 @@ DROP TABLE IF EXISTS Stage;
 
 CREATE TABLE Stage (
     sID INTEGER NOT NULL UNIQUE,
+    vID INTEGER NOT NULL,
+    adID INTEGER NOT NULL,
     sName TEXT NOT NULL,
     sNumHeat INTEGER,
     sDate DATE NOT NULL CHECK (sDate < DATE('2024-12-01')),
     PRIMARY KEY (sID),
-    FOREIGN KEY (sID) REFERENCES Venue(vID),
-    FOREIGN KEY (sID) REFERENCES AthleticDiscipline(adID)
+    FOREIGN KEY (vID) REFERENCES Venue(vID),
+    FOREIGN KEY (adID) REFERENCES AthleticDiscipline(adID)
 );
 
 DROP TABLE IF EXISTS Athlete;
@@ -95,11 +97,14 @@ DROP TABLE IF EXISTS Medal;
 
 CREATE TABLE Medal (
     mID INTEGER NOT NULL UNIQUE,
+    comID INTEGER NOT NULL,
+    aID INTEGER NOT NULL,
+    adID INTEGER NOT NULL,
     mType TEXT NOT NULL CHECK (mType IN ('Gold', 'Silver', 'Bronze')),
     PRIMARY KEY (mID),
-    FOREIGN KEY (mID) REFERENCES Committee(comID),
-    FOREIGN KEY (mID) REFERENCES Athlete(aID),
-    FOREIGN KEY (mID) REFERENCES AthleticDiscipline(adID)
+    FOREIGN KEY (comID) REFERENCES Committee(comID),
+    FOREIGN KEY (aID) REFERENCES Athlete(aID),
+    FOREIGN KEY (adID) REFERENCES AthleticDiscipline(adID)
 );
 
 DROP TABLE IF EXISTS Venue;
@@ -130,12 +135,14 @@ DROP TABLE IF EXISTS Record;
 
 CREATE TABLE Record (
     rID INTEGER NOT NULL UNIQUE,
+    adID INTEGER NOT NULL,
+    aID INTEGER NOT NULL,
     rType TEXT NOT NULL CHECK (rType IN ('World', 'Olympic')),
     rDate DATE NOT NULL CHECK (rDate < DATE('2024-12-01')),
     rLocation TEXT NOT NULL,
     PRIMARY KEY (rID),
-    FOREIGN KEY (rID) REFERENCES AthleticDiscipline(adID),
-    FOREIGN KEY (rID) REFERENCES Athlete(aID)
+    FOREIGN KEY (adID) REFERENCES AthleticDiscipline(adID),
+    FOREIGN KEY (aID) REFERENCES Athlete(aID)
 );
 
 DROP TABLE IF EXISTS OldRecord;
