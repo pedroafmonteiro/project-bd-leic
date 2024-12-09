@@ -105,7 +105,7 @@ INSERT INTO CoachAthlete (aID, cID) VALUES
 INSERT INTO CoachAthleticDiscipline (cID, adID) VALUES
     (004, 001),                                 --coach: Michael Jackson; athletic discipline:
     (005, 002),                                 --coach: Olga Kuznetsova; athletic discipline:
-    (006, 003),                                 --coach: Chen Wei; athletic discipline:                                                                                              --Link a coach to the new discipline
+    (006, 003);                                 --coach: Chen Wei; athletic discipline:                                                                                              --Link a coach to the new discipline
 
 -- Insert into AthleteAthleticDiscipline
 INSERT INTO AthleteAthleticDiscipline (aID, adID) VALUES
